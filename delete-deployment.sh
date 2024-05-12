@@ -15,8 +15,8 @@ sudo apt-get remove --purge -y
 # Remove Node.js
 sudo apt-get remove nodejs npm -y
 
-# Remove PostgreSQL without prompts and without purging
-sudo DEBIAN_FRONTEND=noninteractive apt-get remove postgresql* --no-purge -y
+# Remove PostgreSQL and its dependencies
+sudo apt-get purge postgresql* -y
 sudo apt-get autoremove --purge -y
 sudo apt-get autoclean
 
