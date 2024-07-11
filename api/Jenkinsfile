@@ -10,7 +10,7 @@ pipeline {
     stages{
         stage('Docker Build') {
             steps {
-                sh 'cd api && docker build -t muralialakuntla3/backend .'
+                sh 'cd api && docker build -t harsha124/backend .'
              }
           }
         stage('Docker Login') {
@@ -21,12 +21,12 @@ pipeline {
         stage('Docker Push') {
             steps {
                 sh 'docker push muralialakuntla3/backend'
-		sh 'docker container run -dt --name api -p 3000:3000 muralialakuntla3/backend'
+		sh 'docker container run -dt --name api -p 3000:3000 harsha124/backend'
             }
           }
         stage('Remove old docker images') {
             steps {
-                sh 'docker rmi -f muralialakuntla3/backend'
+                sh 'docker rmi -f harsha124/backend'
               }
           }
         stage('creating database container') {
@@ -38,7 +38,7 @@ pipeline {
         stage('Running the docker container') {
             steps {
                 sh 'docker container rm --force api'
-                sh 'docker run -d -p 3000:3000 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmsdb:5432/postgres --name api -e PORT=3000 -e MODE=local muralialakuntla3/backend'
+                sh 'docker run -d -p 3000:3000 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmsdb:5432/postgres --name api -e PORT=3000 -e MODE=local harsha124/backend'
                 }
               }
         }
