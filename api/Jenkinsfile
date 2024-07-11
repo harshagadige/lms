@@ -20,7 +20,7 @@ pipeline {
           }
         stage('Docker Push') {
             steps {
-                sh 'docker push muralialakuntla3/backend'
+                sh 'docker push harsha124/backend'
 		sh 'docker container run -dt --name api -p 3000:3000 harsha124/backend'
             }
           }
