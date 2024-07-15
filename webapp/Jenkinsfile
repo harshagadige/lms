@@ -10,7 +10,7 @@ pipeline {
     stages{
         stage('Docker Build') {
             steps {
-                sh 'cd webapp && docker build -t muralialakuntla3/frontend .'
+                sh 'cd webapp && docker build -t harsha124/frontend .'
              }
           }
         stage('Docker Login') {
@@ -20,17 +20,17 @@ pipeline {
           }
         stage('Docker Push') {
             steps {
-                sh 'docker push muralialakuntla3/frontend'
+                sh 'docker push harsha124/frontend'
             }
           }
         stage('Remove old images') {
             steps {
-                sh 'docker rmi -f muralialakuntla3/frontend'
+                sh 'docker rmi -f harsha124/frontend'
               }
           }
         stage('Docker run'){
             steps{
-                sh 'docker container run -dt --name web -p 80:80 muralialakuntla3/frontend'
+                sh 'docker container run -dt --name web -p 80:80 harsha124/frontend'
             }
          }
 	}
